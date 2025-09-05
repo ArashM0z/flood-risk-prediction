@@ -1,0 +1,14 @@
+in_channels: 3
+base_channels: 32
+n_levels: 4
+epochs: 10
+batch_size: 4
+lr: 1.0e-3
+weight_decay: 1.0e-5
+val_fraction: 0.2
+seed: 20260514
+device: cpu
+checkpoint_dir: checkpoints
+mlflow_tracking_uri: file:./mlruns
+mlflow_experiment: flood-risk
+wandb_project: flood-risk
