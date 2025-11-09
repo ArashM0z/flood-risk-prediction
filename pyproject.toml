@@ -1,5 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "portfolio-repo"
-version = "0.1.0"
-requires-python = ">=3.11"
-dependencies = []
+name = "flood-risk"
+version = "0.3.0"
+description = "Flood-risk regression on DEM + rainfall + soil features (U-Net)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Arash Mozhdehi" }]
+dependencies = [
+  "torch>=2.1",
+  "numpy>=1.26",
+  "pyyaml>=6.0",
+  "mlflow>=2.16",
+  "wandb>=0.17",
+  "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov>=4", "ruff>=0.5"]
+
+[project.scripts]
+flood-train = "flood.cli:train_main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
